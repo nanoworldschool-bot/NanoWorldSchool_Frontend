@@ -30,7 +30,7 @@ function Gallery() {
 
       <section className="section">
         <div className="container">
-          <div className="campus-gallery-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))' }}>
+          <div className="campus-gallery-grid">
             {photos.map((photo, index) => (
               <motion.div 
                 key={index} 

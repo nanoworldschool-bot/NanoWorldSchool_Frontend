@@ -45,12 +45,15 @@ function AnnouncementBar() {
           textAlign: 'center',
           fontSize: '0.85rem',
           fontWeight: 700,
-          position: 'relative',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           gap: '0.8rem',
-          zIndex: 1100,
+          zIndex: 2000,
           boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
         }}
       >

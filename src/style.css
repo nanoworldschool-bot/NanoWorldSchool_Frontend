@@ -230,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .has-announcement .navbar.scrolled {
-  top: 0;
+  top: 44px;
 }
 
 .navbar-inner {
@@ -518,21 +518,23 @@ h1, h2, h3, h4, h5, h6 {
 .card-premium h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
 .card-premium p { color: var(--color-text-light); line-height: 1.6; margin: 0; flex-grow: 1; }
 
-/* Campus Gallery Grid */
+/* Campus Gallery - Masonry Layout */
 .campus-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  columns: 3 350px;
+  column-gap: 1.5rem;
 }
 
 .campus-gallery-grid .gallery-item {
-  height: 280px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: all 0.3s ease;
+  break-inside: avoid;
 }
 
 .campus-gallery-grid .gallery-item:hover {
@@ -542,7 +544,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .campus-gallery-grid .gallery-item img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
