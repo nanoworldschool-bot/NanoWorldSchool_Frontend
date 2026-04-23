@@ -129,22 +129,22 @@ function Contact() {
                   <div style={{ display: 'flex', gap: '1rem' }}>
                     {settings?.facebookUrl && (
                       <a href={settings.facebookUrl} target="_blank" rel="noreferrer" className="social-icon">
-                        <LinkIcon size={20} />
+                        <Facebook size={20} />
                       </a>
                     )}
                     {settings?.instagramUrl && (
                       <a href={settings.instagramUrl} target="_blank" rel="noreferrer" className="social-icon">
-                        <LinkIcon size={20} />
+                        <Instagram size={20} />
                       </a>
                     )}
                     {settings?.twitterUrl && (
                       <a href={settings.twitterUrl} target="_blank" rel="noreferrer" className="social-icon">
-                        <LinkIcon size={20} />
+                        <Twitter size={20} />
                       </a>
                     )}
                     {settings?.youtubeUrl && (
                       <a href={settings.youtubeUrl} target="_blank" rel="noreferrer" className="social-icon">
-                        <LinkIcon size={20} />
+                        <Youtube size={20} />
                       </a>
                     )}
                   </div>
