@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Users, Award, BookOpen, Clock, ChevronRight, GraduationCap, Image, Info, Download, FileText } from 'lucide-react';
+import { Users, Award, BookOpen, Clock, ChevronRight, GraduationCap, Image, Info, Download, FileText, Monitor, Shield } from 'lucide-react';
 
 
 import SEO from '../components/SEO';
@@ -154,6 +154,63 @@ function Home() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Section */}
+      <section className="section" style={{ background: 'white' }}>
+        <div className="container">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ marginBottom: '4rem' }}
+          >
+            <h2 className="section-title">Why Choose Nano World School?</h2>
+            <p className="section-subtitle">We don't just teach; we prepare children for the challenges of the 21st century.</p>
+          </motion.div>
+
+          <div className="grid-4">
+            {[
+              { 
+                title: 'Experiential Learning', 
+                desc: 'Moving beyond textbooks with hands-on activities that make concepts stick for a lifetime.',
+                icon: <Users size={40} /> 
+              },
+              { 
+                title: 'Smart Infrastructure', 
+                desc: 'Digital classrooms and AI-enabled learning tools that prepare students for a tech-driven world.',
+                icon: <Monitor size={40} /> 
+              },
+              { 
+                title: 'Safety & Care', 
+                desc: 'CCTV monitored campus and GPS-tracked transportation ensuring your child\'s safety always.',
+                icon: <Shield size={40} /> 
+              },
+              { 
+                title: 'Bold Communication', 
+                desc: 'Special focus on public speaking and personality development to build tomorrow\'s leaders.',
+                icon: <GraduationCap size={40} /> 
+              }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="card-premium"
+                style={{ textAlign: 'center' }}
+              >
+                <div style={{ color: 'var(--color-gold)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+                  {feature.icon}
+                </div>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>{feature.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: '#64748b' }}>{feature.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -321,6 +378,55 @@ function Home() {
         </div>
       </section>
 
+
+
+      {/* Campus Highlights Gallery Section */}
+      <section className="section" style={{ background: '#f8fafc' }}>
+        <div className="container">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ marginBottom: '4rem' }}
+          >
+            <h2 className="section-title">Campus Highlights</h2>
+            <p className="section-subtitle">Take a glimpse into our world-class educational environment.</p>
+          </motion.div>
+
+          <div className="campus-gallery-grid">
+            {[
+              { src: '/building_exterior.jpeg', title: 'Modern Architecture' },
+              { src: '/classroom.jpeg', title: 'Smart Learning' },
+              { src: '/reception.jpeg', title: 'Welcoming Space' },
+              { src: '/interior_seating.jpeg', title: 'Creative Zones' },
+              { src: '/seminar_hall.jpeg', title: 'Innovation Hub' },
+              { src: '/branding_wall.jpeg', title: 'Daily Inspiration' }
+            ].map((photo, index) => (
+              <motion.div 
+                key={index} 
+                className="gallery-item"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                <img src={photo.src} alt={photo.title} style={{ borderRadius: '16px' }} />
+                <div className="gallery-overlay">
+                  <h3 style={{ fontSize: '1.1rem', color: 'white', margin: 0 }}>{photo.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link to="/gallery" className="btn btn-outline" style={{ color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>
+              View Full Gallery <ChevronRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
 
       {/* Cards Section with Floating Animation */}
