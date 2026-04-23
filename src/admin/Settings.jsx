@@ -19,7 +19,8 @@ function Settings() {
     facebookUrl: '',
     instagramUrl: '',
     twitterUrl: '',
-    youtubeUrl: ''
+    youtubeUrl: '',
+    linkedinUrl: ''
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -167,6 +168,10 @@ function Settings() {
               <div className="floating-label-group">
                 <input type="text" value={settings.youtubeUrl} onChange={e => setSettings({...settings, youtubeUrl: e.target.value})} />
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><LinkIcon size={16} /> YouTube URL</label>
+              </div>
+              <div className="floating-label-group">
+                <input type="text" value={settings.linkedinUrl} onChange={e => setSettings({...settings, linkedinUrl: e.target.value})} />
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><LinkIcon size={16} /> LinkedIn URL</label>
               </div>
             </div>
           )}
