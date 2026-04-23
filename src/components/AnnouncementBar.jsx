@@ -38,39 +38,13 @@ function AnnouncementBar() {
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: 'auto', opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
-        style={{ 
-          background: 'var(--color-gold)', 
-          color: 'var(--color-primary)',
-          padding: '0.6rem 1rem',
-          textAlign: 'center',
-          fontSize: '0.85rem',
-          fontWeight: 700,
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '0.8rem',
-          zIndex: 2000,
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-        }}
+        className="announcement-bar"
       >
         <Megaphone size={16} />
-        <span>{announcement}</span>
+        <span className="announcement-text">{announcement}</span>
         <button 
           onClick={() => setIsVisible(false)}
-          style={{ 
-            background: 'transparent', 
-            border: 'none', 
-            color: 'var(--color-primary)', 
-            cursor: 'pointer',
-            padding: '4px',
-            display: 'flex',
-            position: 'absolute',
-            right: '1rem'
-          }}
+          className="announcement-close"
         >
           <X size={14} />
         </button>
