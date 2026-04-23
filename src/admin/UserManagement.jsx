@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 function UserManagement() {
   const [users, setUsers] = useState([]);
   const [inviteEmail, setInviteEmail] = useState('');
+  const [inviteRole, setInviteRole] = useState('Editor');
   const [loading, setLoading] = useState(true);
   const [inviting, setInviting] = useState(false);
 
@@ -29,12 +30,14 @@ function UserManagement() {
     e.preventDefault();
     setInviting(true);
     try {
-      await api.post('/users/invite', { email: inviteEmail });
-      alert(`Invitation sent to ${inviteEmail}`);
+      await api.post('/users/invite', { email: inviteEmail, role: inviteRole });
+      alert(`Invitation sent to ${inviteEmail} as ${inviteRole}`);
       setInviteEmail('');
+      setInviteRole('Editor');
       fetchUsers();
     } catch (err) {
-      alert(err.response?.data?.message || 'Failed to send invitation');
+      const errorMsg = err.response?.data?.error || err.response?.data?.message || 'Failed to send invitation';
+      alert(errorMsg);
     } finally {
       setInviting(false);
     }
@@ -84,6 +87,17 @@ function UserManagement() {
                 required
               />
               <label>Email Address</label>
+            </div>
+            <div className="floating-label-group">
+              <select 
+                value={inviteRole} 
+                onChange={e => setInviteRole(e.target.value)}
+                style={{ width: '100%', padding: '1rem 0', border: 'none', borderBottom: '2px solid var(--color-border)', background: 'transparent' }}
+              >
+                <option value="Editor">Editor (Content Management)</option>
+                <option value="Admin">Admin (User & Settings Management)</option>
+                <option value="Viewer">Viewer (Read-only Access)</option>
+              </select>
             </div>
             <button type="submit" className="btn btn-navy" disabled={inviting} style={{ width: '100%', justifyContent: 'center', padding: '1rem' }}>
               {inviting ? <Loader2 className="animate-spin" /> : 'Send Invite'}

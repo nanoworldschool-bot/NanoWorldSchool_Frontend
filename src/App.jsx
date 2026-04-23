@@ -19,6 +19,7 @@ import Login from './pages/auth/Login';
 
 import ForgotPassword from './pages/auth/ForgotPassword';
 import SetPassword from './pages/auth/SetPassword';
+import AcceptInvitation from './pages/auth/AcceptInvitation';
 import Setup from './pages/auth/Setup';
 import CookieConsent from './components/CookieConsent';
 
@@ -95,6 +96,7 @@ function AppContent() {
                      path === '/setup' ||
                      path === '/forgot-password' ||
                      path === '/set-password' ||
+                     path === '/accept-invitation' ||
                      path === '/reset-password';
 
   return (
@@ -136,6 +138,7 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/set-password" element={<SetPassword />} />
+        <Route path="/accept-invitation" element={<AcceptInvitation />} />
         <Route path="/setup" element={<Setup />} />
       </Routes>
 
