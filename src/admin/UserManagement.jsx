@@ -63,10 +63,10 @@ function UserManagement() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '3rem', alignItems: 'start' }}>
         {/* Left: Invite Form */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="card-premium" 
+          className="card-premium"
           style={{ padding: '2.5rem', background: 'white', position: 'sticky', top: '2rem' }}
         >
           <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(212, 175, 55, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-gold)', marginBottom: '1.5rem' }}>
@@ -77,11 +77,11 @@ function UserManagement() {
 
           <form onSubmit={handleInvite} style={{ display: 'grid', gap: '1.5rem' }}>
             <div className="floating-label-group">
-              <input 
-                type="email" 
-                value={inviteEmail} 
-                onChange={e => setInviteEmail(e.target.value)} 
-                required 
+              <input
+                type="email"
+                value={inviteEmail}
+                onChange={e => setInviteEmail(e.target.value)}
+                required
               />
               <label>Email Address</label>
             </div>
@@ -106,31 +106,31 @@ function UserManagement() {
             <div style={{ display: 'grid', gap: '1rem' }}>
               <AnimatePresence>
                 {users.map((user, index) => (
-                  <motion.div 
+                  <motion.div
                     key={user._id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ delay: index * 0.05 }}
-                    className="card-premium" 
-                    style={{ 
-                      padding: '1.2rem 1.5rem', 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
+                    className="card-premium"
+                    style={{
+                      padding: '1.2rem 1.5rem',
+                      display: 'flex',
+                      justifyContent: 'space-between',
                       alignItems: 'center',
                       background: 'white',
                       border: '1px solid rgba(0,0,0,0.03)'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                      <div style={{ 
-                        width: '45px', 
-                        height: '45px', 
-                        borderRadius: '50%', 
-                        background: 'var(--color-primary)', 
-                        color: 'white', 
-                        display: 'flex', 
-                        alignItems: 'center', 
+                      <div style={{
+                        width: '45px',
+                        height: '45px',
+                        borderRadius: '50%',
+                        background: 'var(--color-primary)',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: '0.8rem',
                         fontWeight: 700,
@@ -150,20 +150,20 @@ function UserManagement() {
                         </div>
                       </div>
                     </div>
-                    
-                    <motion.button 
+
+                    <motion.button
                       whileHover={{ scale: 1.1, background: '#fee2e2', color: '#ef4444' }}
                       onClick={() => deleteUser(user._id)}
-                      style={{ 
-                        width: '36px', 
-                        height: '36px', 
-                        borderRadius: '8px', 
-                        background: '#f8fafc', 
-                        color: '#64748b', 
-                        border: 'none', 
-                        cursor: 'pointer', 
-                        display: 'flex', 
-                        alignItems: 'center', 
+                      style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '8px',
+                        background: '#f8fafc',
+                        color: '#64748b',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
                         justifyContent: 'center',
                         transition: 'all 0.3s'
                       }}

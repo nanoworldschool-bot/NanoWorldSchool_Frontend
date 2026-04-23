@@ -20,7 +20,7 @@ function ForgotPassword() {
 
   return (
     <div className="auth-page" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-primary)', padding: '2rem' }}>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="card-premium"
@@ -40,18 +40,18 @@ function ForgotPassword() {
         ) : (
           <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.5rem' }}>
             <div className="floating-label-group">
-              <input 
-                type="email" 
-                required 
+              <input
+                type="email"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <label><Mail size={16} /> Email Address</label>
             </div>
 
-            <button 
-              type="submit" 
-              className="btn btn-navy" 
+            <button
+              type="submit"
+              className="btn btn-navy"
               style={{ width: '100%', padding: '1rem' }}
               disabled={loading}
             >

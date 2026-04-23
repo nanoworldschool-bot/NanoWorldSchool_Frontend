@@ -31,17 +31,17 @@ function AdminLayout() {
   return (
     <div className="admin-container" style={{ display: 'flex', minHeight: '100vh', background: '#f4f7f6', position: 'relative' }}>
       {/* Mobile Header */}
-      <header className="admin-mobile-header" style={{ 
-        display: window.innerWidth <= 992 ? 'flex' : 'none', 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        height: '60px', 
-        background: '#0B192C', 
-        color: 'white', 
-        alignItems: 'center', 
-        padding: '0 1rem', 
+      <header className="admin-mobile-header" style={{
+        display: window.innerWidth <= 992 ? 'flex' : 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '60px',
+        background: '#0B192C',
+        color: 'white',
+        alignItems: 'center',
+        padding: '0 1rem',
         zIndex: 100,
         justifyContent: 'space-between'
       }}>
@@ -53,17 +53,17 @@ function AdminLayout() {
 
       {/* Sidebar Overlay for mobile */}
       {isSidebarOpen && window.innerWidth <= 992 && (
-        <div 
+        <div
           onClick={() => setIsSidebarOpen(false)}
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000 }}
         />
       )}
 
       {/* Sidebar */}
-      <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`} style={{ 
-        width: '280px', 
-        background: '#0B192C', 
-        color: 'white', 
+      <aside className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`} style={{
+        width: '280px',
+        background: '#0B192C',
+        color: 'white',
         padding: '2rem 1rem',
         position: window.innerWidth <= 992 ? 'fixed' : 'sticky',
         top: 0,
@@ -86,7 +86,7 @@ function AdminLayout() {
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {menuItems.map((item) => (
               <li key={item.path} style={{ marginBottom: '0.5rem' }}>
-                <Link 
+                <Link
                   to={item.path}
                   onClick={closeSidebarOnMobile}
                   style={{
@@ -117,18 +117,18 @@ function AdminLayout() {
       </aside>
 
       {/* Main Content */}
-      <main className="admin-main" style={{ 
-        flex: 1, 
-        padding: window.innerWidth <= 992 ? '80px 1rem 2rem' : '2rem', 
+      <main className="admin-main" style={{
+        flex: 1,
+        padding: window.innerWidth <= 992 ? '80px 1rem 2rem' : '2rem',
         overflowY: 'auto',
         maxWidth: '100%'
       }}>
-        <div className="admin-content-card" style={{ 
-          background: 'white', 
-          borderRadius: '16px', 
-          padding: window.innerWidth <= 992 ? '1.5rem' : '2rem', 
-          boxShadow: '0 4px 20px rgba(0,0,0,0.05)', 
-          minHeight: 'calc(100vh - 4rem)' 
+        <div className="admin-content-card" style={{
+          background: 'white',
+          borderRadius: '16px',
+          padding: window.innerWidth <= 992 ? '1.5rem' : '2rem',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+          minHeight: 'calc(100vh - 4rem)'
         }}>
           <Outlet />
         </div>

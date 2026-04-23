@@ -13,7 +13,7 @@ function SetPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) return setError('Passwords do not match');
-    
+
     setLoading(true);
     // Placeholder for MongoDB password update logic
     setTimeout(() => {
@@ -25,7 +25,7 @@ function SetPassword() {
 
   return (
     <div className="auth-page" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-primary)', padding: '2rem' }}>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="card-premium"
@@ -42,9 +42,9 @@ function SetPassword() {
 
         <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.5rem' }}>
           <div className="floating-label-group">
-            <input 
-              type="password" 
-              required 
+            <input
+              type="password"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -52,18 +52,18 @@ function SetPassword() {
           </div>
 
           <div className="floating-label-group">
-            <input 
-              type="password" 
-              required 
+            <input
+              type="password"
+              required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <label><Lock size={16} /> Confirm Password</label>
           </div>
 
-          <button 
-            type="submit" 
-            className="btn btn-navy" 
+          <button
+            type="submit"
+            className="btn btn-navy"
             style={{ width: '100%', padding: '1rem' }}
             disabled={loading}
           >

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import api from '../utils/api';
 
 // Custom Social Icons with official brand colors
 const FacebookIcon = () => (
@@ -38,6 +39,28 @@ const YoutubeIcon = () => (
 );
 
 function Footer() {
+  const [settings, setSettings] = useState({
+    contactEmail: 'info@nanoworldschool.co.in',
+    contactPhone: '+91 98765 43210',
+    address: 'Nano World School Road, Hyderabad',
+    facebookUrl: '#',
+    instagramUrl: '#',
+    twitterUrl: '#',
+    youtubeUrl: '#',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.827222623!2d78.4347!3d17.43!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI1JzQ4LjAiTiA3OMKwMjYnMDQuOCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
+  });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await api.get('/settings');
+        if (res.data) setSettings(res.data);
+      } catch (err) {
+        console.warn('Failed to fetch footer settings');
+      }
+    };
+    fetchSettings();
+  }, []);
   return (
     <motion.footer 
       className="footer" 
@@ -58,10 +81,10 @@ function Footer() {
             <p style={{ marginBottom: '1.5rem' }}>Empowering the leaders of tomorrow through experiential learning and holistic development.</p>
 
             <div className="footer-social">
-              <a href="#" className="social-icon" aria-label="Facebook"><FacebookIcon /></a>
-              <a href="#" className="social-icon" aria-label="Instagram"><InstagramIcon /></a>
-              <a href="#" className="social-icon" aria-label="Twitter"><TwitterIcon /></a>
-              <a href="#" className="social-icon" aria-label="Youtube"><YoutubeIcon /></a>
+              <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><FacebookIcon /></a>
+              <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><InstagramIcon /></a>
+              <a href={settings.twitterUrl} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Twitter"><TwitterIcon /></a>
+              <a href={settings.youtubeUrl} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Youtube"><YoutubeIcon /></a>
             </div>
           </div>
 
@@ -83,15 +106,15 @@ function Footer() {
             <ul className="footer-links">
               <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
                 <MapPin size={18} className="text-gold" />
-                <span>Plot No. 45, Nano World School Road, Hyderabad</span>
+                <span>{settings.address}</span>
               </li>
               <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Phone size={18} className="text-gold" />
-                <span>+91 98765 43210</span>
+                <a href={`tel:${settings.contactPhone}`}>{settings.contactPhone}</a>
               </li>
               <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Mail size={18} className="text-gold" />
-                <span>info@nanoworldschool.com</span>
+                <a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}</a>
               </li>
             </ul>
           </div>
@@ -123,7 +146,7 @@ function Footer() {
         {/* Location Map */}
         <div className="footer-map" style={{ marginTop: '3rem', borderRadius: '16px', overflow: 'hidden', height: '250px', border: '1px solid rgba(255,255,255,0.1)' }}>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.827222623!2d78.4347!3d17.43!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI1JzQ4LjAiTiA3OMKwMjYnMDQuOCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+            src={settings.mapEmbedUrl} 
             width="100%" 
             height="100%" 
             style={{ border: 0, opacity: 0.8 }} 

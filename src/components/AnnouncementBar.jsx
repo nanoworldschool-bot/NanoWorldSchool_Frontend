@@ -21,6 +21,15 @@ function AnnouncementBar() {
     fetchAnnouncement();
   }, []);
 
+  useEffect(() => {
+    if (isVisible && announcement) {
+      document.documentElement.classList.add('has-announcement');
+    } else {
+      document.documentElement.classList.remove('has-announcement');
+    }
+    return () => document.documentElement.classList.remove('has-announcement');
+  }, [isVisible, announcement]);
+
   if (!announcement || !isVisible) return null;
 
   return (

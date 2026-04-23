@@ -69,11 +69,12 @@ function AnimationWrapper() {
 
 import AnnouncementBar from './components/AnnouncementBar';
 
+import ProtectedRoute from './components/ProtectedRoute';
+
 function App() {
   return (
     <Router>
       <div className="app-container">
-        <AnnouncementBar />
         <CookieConsent />
         <ScrollToTop />
         <AnimationWrapper />
@@ -98,6 +99,7 @@ function AppContent() {
 
   return (
     <>
+      {!hideLayout && <AnnouncementBar />}
       {!hideLayout && <Navbar />}
       <AppRoutes />
       {!hideLayout && <Footer />}
@@ -118,15 +120,16 @@ function AppRoutes() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         
-        {/* Admin Routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="inbox" element={<Inbox />} />
-          <Route path="gallery" element={<GalleryManagement />} />
-          <Route path="pages" element={<PageManagement />} />
-          <Route path="users" element={<UserManagement />} />
-          <Route path="settings" element={<Settings />} />
-
+        {/* Admin Routes (Protected) */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="inbox" element={<Inbox />} />
+            <Route path="gallery" element={<GalleryManagement />} />
+            <Route path="pages" element={<PageManagement />} />
+            <Route path="users" element={<UserManagement />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
         </Route>
 
         {/* Auth Routes */}
