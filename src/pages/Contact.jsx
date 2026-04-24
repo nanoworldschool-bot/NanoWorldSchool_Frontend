@@ -118,7 +118,7 @@ function Contact() {
                 <Clock className="info-icon" />
                 <div>
                   <h4>Office Hours</h4>
-                  <p>Monday - Saturday: 8:30 AM - 4:30 PM</p>
+                  <p>Monday - Sunday   8:30 AM - 6:30 PM</p>
                 </div>
               </div>
 
