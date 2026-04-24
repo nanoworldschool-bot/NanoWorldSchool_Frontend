@@ -66,7 +66,7 @@ function Home() {
     { icon: <Users size={32} />, value: '500+', label: 'Students' },
     { icon: <Award size={32} />, value: '25+', label: 'Awards' },
     { icon: <BookOpen size={32} />, value: '15+', label: 'Programs' },
-    { icon: <Clock size={32} />, value: '10+', label: 'Years' },
+    { icon: <Clock size={32} />, value: '18+', label: 'Years' },
   ];
 
   const testimonials = [
