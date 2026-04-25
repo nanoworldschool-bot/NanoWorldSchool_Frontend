@@ -532,13 +532,13 @@ function Home() {
               Admissions Open 2026–27
             </h2>
             <p className="section-subtitle" style={{ fontSize: '1.2rem', maxWidth: '600px', marginBottom: '2.5rem' }}>
-              Secure a bright future for your child at Nano World School. Join our Group of lifelong learners and future leaders.
+              Secure a bright future for your child at Nano World School. Join our family of lifelong learners and future leaders.
             </p>
             <Link to="/contact" className="btn btn-navy" style={{ padding: '1.2rem 3rem', fontSize: '1.1rem' }}>
               Enquire Now
             </Link>
           </motion.div>
-        </div>
+        </div>  
       </section>
 
 
