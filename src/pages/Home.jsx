@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Users, Award, BookOpen, Clock, ChevronRight, GraduationCap, Image, Info, Download, FileText, Monitor, Shield } from 'lucide-react';
+import { Users, Award, BookOpen, Clock, ChevronRight, GraduationCap, Image, Info, Download, FileText, Monitor, Shield, Presentation, MousePointer2, Settings, LineChart, Activity, Scale, Hammer } from 'lucide-react';
 
 
 import SEO from '../components/SEO';
@@ -35,7 +35,7 @@ function Home() {
   const [pageContent, setPageContent] = useState({
     heroTitle: 'Nano World School',
     heroSubtitle: 'Think Deep. Speak Bold.',
-    heroText: 'Empowering students through experiential learning, holistic development, and world-class educational infrastructure.'
+    heroText: 'Empowering students through experiential learning, holistic development, academics, discipline and world-class educational infrastructure.'
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -242,93 +242,107 @@ function Home() {
           >
             <h2 className="section-title text-left">Nurturing True Potential</h2>
             <p className="section-subtitle text-left" style={{ marginBottom: '2rem' }}>At Nano World School, we believe in shaping the leaders of tomorrow through an integrated approach to education.</p>
-            <ul className="about-list">
-              {['Experiential Learning', 'Digital Smart Classrooms', 'Activity-Based Curriculum', 'Safe Transportation'].map((item, i) => (
-                <motion.li 
+            
+            <div className="about-points-list">
+              {[
+                { text: "Learn From India's Top Faculty", icon: <GraduationCap size={24} /> },
+                { text: "Smart Classrooms", icon: <Presentation size={24} /> },
+                { text: "Personal Mentoring", icon: <Users size={24} /> }
+              ].map((item, i) => (
+                <motion.div 
+                  className="about-point-item" 
                   key={i}
-                  initial={{ x: 20, opacity: 0 }}
+                  initial={{ x: 30, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                 >
-                  <ChevronRight size={18} className="text-gold" /> {item}
-                </motion.li>
+                  <div className="about-point-icon">
+                    {item.icon}
+                  </div>
+                  <span>{item.text}</span>
+                </motion.div>
               ))}
-            </ul>
+            </div>
+
             <div style={{ marginTop: '2.5rem' }}>
               <motion.a href="/about" className="btn btn-navy" whileHover={{ x: 5 }}>Discover More</motion.a>
             </div>
           </motion.div>
         </div>
       </section>
-
-      {/* Explore Pages Section */}
-      <section className="section bg-light" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)' }}>
+      {/* Academic Excellence Hub (Target Layout) */}
+      <section className="hub-section">
         <div className="container">
           <motion.div 
             className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Explore Our School</h2>
-            <p className="section-subtitle">Everything you need to know about Nano World School</p>
+            <h2 className="section-title">Academic Excellence</h2>
+            <p className="section-subtitle">A comprehensive curriculum designed for competitive readiness and holistic growth.</p>
           </motion.div>
 
-          <div className="grid-3">
+          <div className="simple-academic-grid">
             {[
               { 
-                title: 'About Our School', 
-                desc: 'Learn about our journey, vision, and the philosophy that makes Nano World School a leader in education.', 
-                link: '/about', 
-                icon: <Info size={32} />,
-                btnText: 'Read More'
+                title: 'Integrated Foundation', 
+                desc: 'Early exposure to JEE, NEET, SAT, IPMAT, CLAT, and Olympiads.',
+                color: '#7D3C98',
+                icon: <Users />
               },
               { 
-                title: 'Academics', 
-                desc: 'Explore our comprehensive curriculum, from activity-based nursery learning to competitive grade 10 coaching.', 
-                link: '/academics', 
-                icon: <GraduationCap size={32} />,
-                btnText: 'View More'
+                title: 'Skill-Based Learning', 
+                desc: 'Coding, reasoning, and analytical projects to build problem-solving ability.',
+                color: '#E74C3C',
+                icon: <Hammer />
               },
               { 
-                title: 'Campus Gallery', 
-                desc: 'Take a virtual tour of our state-of-the-art infrastructure, sports facilities, and vibrant student life.', 
-                link: '/gallery', 
-                icon: <Image size={32} />,
-                btnText: 'Explore More'
+                title: 'Life Skills', 
+                desc: 'Finance, Management, Current Affairs and Self-help.',
+                color: '#16A085',
+                icon: <Scale />
+              },
+              { 
+                title: 'Academic Excellence', 
+                desc: 'Maths, Science, Social and English taught for deep conceptual mastery.',
+                color: '#F39C12',
+                icon: <Settings />
+              },
+              { 
+                title: 'Communication Edge', 
+                desc: "Daily 'Speak-to-Lead' and 'Nano Talks' sessions for fluent expression.",
+                color: '#2980B9',
+                icon: <LineChart />
+              },
+              { 
+                title: 'Top class Sports Facilities', 
+                desc: 'We take charge of fitness, discipline & health through professionally guided activities.',
+                color: '#5B2C6F',
+                icon: <Activity />
               }
-            ].map((page, i) => (
+            ].map((item, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="simple-academic-card"
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="card-premium"
-                style={{ textAlign: 'center', padding: '3rem 2rem' }}
+                transition={{ delay: i * 0.1 }}
               >
-                <div style={{ color: 'var(--color-gold)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
-                  {page.icon}
+                <div className="simple-card-icon" style={{ background: item.color }}>
+                  {item.icon}
                 </div>
-                <h3 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>{page.title}</h3>
-                <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '2rem' }}>
-                  {page.desc}
-                </p>
-                <Link 
-                  to={page.link} 
-                  className="btn btn-navy" 
-                  style={{ width: '100%', justifyContent: 'center' }}
-                >
-                  {page.btnText}
-                </Link>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+     
 
       {/* Virtual Tour Section */}
       <section className="section" style={{ background: 'var(--color-white)' }}>
@@ -427,49 +441,74 @@ function Home() {
           </div>
         </div>
       </section>
-
-
-      {/* Cards Section with Floating Animation */}
-      <section className="section bg-light">
+ {/* Explore Pages Section */}
+      <section className="section bg-light" style={{ borderTop: '1px solid rgba(212, 175, 55, 0.1)' }}>
         <div className="container">
           <motion.div 
             className="text-center"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Academic Excellence</h2>
-            <p className="section-subtitle">A comprehensive curriculum designed for competitive readiness.</p>
+            <h2 className="section-title">Explore Our School</h2>
+            <p className="section-subtitle">Everything you need to know about Nano World School</p>
           </motion.div>
-          
-          <motion.div 
-            className="grid-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ marginTop: '3rem' }}
-          >
+
+          <div className="grid-3">
             {[
-              { title: 'Activity-Based', desc: 'Integrated skill development.' },
-              { title: 'Co-curricular', desc: 'Coding, robotics, and reasoning.' },
-              { title: 'Sports & Arts', desc: 'Physical and creative growth.' },
-              { title: 'Smart Tech', desc: 'AI enabled learning environment.' },
-            ].map((card, i) => (
+              { 
+                title: 'About Our School', 
+                desc: 'Learn about our journey, vision, and the philosophy that makes Nano World School a leader in education.', 
+                link: '/about', 
+                icon: <Info size={32} />,
+                btnText: 'Read More'
+              },
+              { 
+                title: 'Academics', 
+                desc: 'Explore our comprehensive curriculum, from activity-based nursery learning to competitive grade 10 coaching.', 
+                link: '/academics', 
+                icon: <GraduationCap size={32} />,
+                btnText: 'View More'
+              },
+              { 
+                title: 'Campus Gallery', 
+                desc: 'Take a virtual tour of our state-of-the-art infrastructure, sports facilities, and vibrant student life.', 
+                link: '/gallery', 
+                icon: <Image size={32} />,
+                btnText: 'Explore More'
+              }
+            ].map((page, i) => (
               <motion.div 
-                key={i} 
-                className="card-premium" 
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="card-premium"
+                style={{ textAlign: 'center', padding: '3rem 2rem' }}
               >
-                <h3>{card.title}</h3>
-                <p>{card.desc}</p>
+                <div style={{ color: 'var(--color-gold)', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+                  {page.icon}
+                </div>
+                <h3 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>{page.title}</h3>
+                <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '2rem' }}>
+                  {page.desc}
+                </p>
+                <Link 
+                  to={page.link} 
+                  className="btn btn-navy" 
+                  style={{ width: '100%', justifyContent: 'center' }}
+                >
+                  {page.btnText}
+                </Link>
               </motion.div>
             ))}
-
-          </motion.div>
+          </div>  
         </div>
       </section>
+
+      
 
       {/* Admissions CTA Section */}
       <section className="section" style={{ background: '#FFFDF5', borderTop: '1px solid rgba(212, 175, 55, 0.2)' }}>
@@ -493,7 +532,7 @@ function Home() {
               Admissions Open 2026–27
             </h2>
             <p className="section-subtitle" style={{ fontSize: '1.2rem', maxWidth: '600px', marginBottom: '2.5rem' }}>
-              Secure a bright future for your child at Nano World School. Join our community of lifelong learners and future leaders.
+              Secure a bright future for your child at Nano World School. Join our Group of lifelong learners and future leaders.
             </p>
             <Link to="/contact" className="btn btn-navy" style={{ padding: '1.2rem 3rem', fontSize: '1.1rem' }}>
               Enquire Now

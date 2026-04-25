@@ -109,10 +109,36 @@ function AdminLayout() {
           </ul>
         </nav>
 
-        <div style={{ marginTop: 'auto', padding: '1rem' }}>
+        <div style={{ marginTop: 'auto', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <Link to="/" style={{ color: 'white', opacity: 0.6, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
             <LogOut size={16} /> Exit to Site
           </Link>
+          <button 
+            onClick={() => {
+              localStorage.removeItem('token');
+              localStorage.removeItem('user');
+              window.location.href = '/login';
+            }}
+            style={{ 
+              background: 'rgba(255, 255, 255, 0.05)', 
+              border: 'none', 
+              color: '#ff4d4d', 
+              padding: '0.8rem', 
+              borderRadius: '8px', 
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontSize: '0.9rem',
+              transition: '0.3s',
+              width: '100%',
+              marginTop: '1rem'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255, 77, 77, 0.1)'}
+            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'}
+          >
+            <LogOut size={16} /> Logout
+          </button>
         </div>
       </aside>
 

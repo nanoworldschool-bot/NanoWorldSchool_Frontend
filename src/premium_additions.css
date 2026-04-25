@@ -291,4 +291,111 @@ body {
         width: 260px !important;
     }
 }
+
+/* Feature Points with Logos (from image) */
+.about-points-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-point-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.about-point-icon {
+    width: 54px;
+    height: 54px;
+    background: #8b1a1a; /* Dark Red from image */
+    border: 2px solid #8b1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(139, 26, 26, 0.2);
+    transition: var(--transition);
+}
+
+.about-point-item:hover .about-point-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: #a52a2a;
+}
+
+.about-point-item span {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: var(--color-navy);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+/* Simple Academic Excellence Grid */
+.simple-academic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.simple-academic-card {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.simple-academic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    border-color: rgba(11, 25, 44, 0.1);
+}
+
+.simple-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.simple-academic-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+}
+
+.simple-academic-card p {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .simple-academic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .simple-academic-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 

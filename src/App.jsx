@@ -16,7 +16,6 @@ import Settings from './admin/Settings';
 import UserManagement from './admin/UserManagement';
 import PageManagement from './admin/PageManagement';
 import Login from './pages/auth/Login';
-
 import ForgotPassword from './pages/auth/ForgotPassword';
 import SetPassword from './pages/auth/SetPassword';
 import AcceptInvitation from './pages/auth/AcceptInvitation';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, BookOpen, Camera, Info, Phone, GraduationCap, Home } from 'lucide-react';
+import { Menu, X, ChevronDown, BookOpen, Camera, Info, Phone, GraduationCap, Home, LayoutDashboard } from 'lucide-react';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +27,8 @@ function Navbar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  
   const navLinks = [
     { name: 'Home', path: '/', icon: <Home size={24} /> },
     { name: 'About', path: '/about', icon: <Info size={24} /> },
@@ -34,6 +36,10 @@ function Navbar() {
     { name: 'Gallery', path: '/gallery', icon: <Camera size={24} /> },
     { name: 'Contact', path: '/contact', icon: <Phone size={24} /> },
   ];
+
+  if (user && (user.role === 'Admin' || user.role === 'Super Admin')) {
+    navLinks.push({ name: 'Admin', path: '/admin', icon: <LayoutDashboard size={24} /> });
+  }
 
   const menuVariants = {
     closed: {
@@ -98,7 +104,22 @@ function Navbar() {
               
               <motion.div variants={itemVariants} className="menu-footer">
                 <p>Join the Nano World Family</p>
-                <Link to="/contact" className="btn btn-primary" onClick={closeMenu}>Enquire Now</Link>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <Link to="/contact" className="btn btn-primary" onClick={closeMenu}>Enquire Now</Link>
+                  {user && (user.role === 'Admin' || user.role === 'Super Admin') && (
+                    <button 
+                      onClick={() => {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        window.location.href = '/login';
+                      }}
+                      className="btn"
+                      style={{ background: 'rgba(255, 77, 77, 0.1)', color: '#ff4d4d', border: '1px solid rgba(255, 77, 77, 0.2)', width: '100%' }}
+                    >
+                      Logout
+                    </button>
+                  )}
+                </div>
                 <div className="menu-socials">
                   {/* Social icons could go here */}
                 </div>
@@ -126,6 +147,21 @@ function Navbar() {
                 </Link>
               </li>
             ))}
+            {user && (user.role === 'Admin' || user.role === 'Super Admin') && (
+              <li className="nav-cta-wrapper">
+                <button 
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.href = '/login';
+                  }}
+                  className="btn btn-secondary nav-cta"
+                  style={{ background: 'rgba(255, 77, 77, 0.1)', color: '#ff4d4d', border: '1px solid rgba(255, 77, 77, 0.2)' }}
+                >
+                  Logout
+                </button>
+              </li>
+            )}
             <li className="nav-cta-wrapper">
               <Link to="/contact" className="btn btn-primary nav-cta">Enquire Now</Link>
             </li>
