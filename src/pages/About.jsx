@@ -1,33 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Heart, Shield, Award } from 'lucide-react';
+import { Target, Eye, Gem } from 'lucide-react';
 import SEO from '../components/SEO';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { type: 'spring', stiffness: 100 }
-  }
-};
-
 function About() {
-  const values = [
-    { icon: <Target className="text-gold" />, title: 'Vision', text: 'To empower students with the skills and confidence to lead in a global society.' },
-    { icon: <Heart className="text-gold" />, title: 'Mission', text: 'Providing a nurturing environment that fosters intellectual and personal growth.' },
-    { icon: <Shield className="text-gold" />, title: 'Values', text: 'Integrity, excellence, and respect form the core of everything we do.' },
-    { icon: <Award className="text-gold" />, title: 'Motto', text: 'Think Deep. Speak Bold.' },
-  ];
-
   return (
     <motion.div
       initial="hidden"
@@ -54,51 +30,123 @@ function About() {
 
       <section className="section">
         <div className="container">
-          <div className="grid-2 align-center">
+          <motion.div 
+            className="outcome-promise-card"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="outcome-title">THE OUTCOME PROMISE</h2>
+            <p style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '1.5rem' }}>
+              By Class X, every Nano World student will:
+            </p>
+            <ul className="outcome-list">
+              <li>Master concepts with depth, clarity, and a spirit of curiosity.</li>
+              <li>Communicate fluently, confidently, and respectfully in every situation.</li>
+              <li>Live with empathy, gratitude, discipline, and emotional resilience.</li>
+              <li>Build strong physical fitness, stamina, and healthy lifelong habits.</li>
+              <li>Be fully prepared for competitive exams and equally ready for life beyond school.</li>
+            </ul>
+
+            <div className="outcome-commitment">
+              <p>This is a commitment from the Nano World School Management.</p>
+              <div className="outcome-confidence">
+                <p>
+                  Parents can have complete confidence on Nano World School that we stand by 
+                  every child, every step of the way — guiding, nurturing, and shaping them with the highest standards of academics, values, life skills, and well-being.
+                </p>
+              </div>
+            </div>
+
+            <div className="outcome-footer">
+              <div className="powered-by">Powered by Nano Eduventures</div>
+              <div className="school-sign-off">
+                — Nano World School <span className="school-motto">| Think Deep. Speak Bold.</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="core-identity-section">
+        <div className="container">
+          <div className="core-identity-list">
+            {/* Vision */}
             <motion.div 
+              className="core-identity-item"
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="section-title text-left">Founder's Message</h2>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-text)' }}>
-                "Nano World School was established with a vision to revolutionize the pre-school and primary education landscape. 
-                We believe that every child is unique and deserves an environment that celebrates their individuality while 
-                providing rigorous academic foundations."
-              </p>
-              <p style={{ marginTop: '1rem', fontWeight: 600 }}>— Mr. Venkat, Founder</p>
+              <div className="core-identity-icon-wrapper">
+                <Target />
+              </div>
+              <div className="core-identity-content">
+                <h2>Vision</h2>
+                <p>
+                  To nurture the future we have to ready individuals by blending academic excellence, 
+                  strong values, confident communication, and holistic physical well being, 
+                  empowering every child to learn deeply, live responsibly, and lead with integrity.
+                </p>
+              </div>
             </motion.div>
+
+            {/* Mission */}
             <motion.div 
-              className="image-wrapper"
+              className="core-identity-item"
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <img src="/building_exterior.jpeg" alt="School Building" className="about-img-real" />
+              <div className="core-identity-icon-wrapper">
+                <Eye />
+              </div>
+              <div className="core-identity-content">
+                <h2>Mission</h2>
+                <p>
+                  Our mission is to shape every Nano Scholar into a self-assured learner and leader. 
+                  We blend academic excellence with emotional intelligence, communication mastery, 
+                  and physical fitness — ensuring that each child grows with both intellect and inner strength.
+                </p>
+                <p>
+                  Through a culture of care, challenge, and character, we prepare students not just to clear exams, 
+                  but to create their own mark in the world — with humility in success and courage in challenges.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Quality Policy */}
+            <motion.div 
+              className="core-identity-item"
+              initial={{ x: -50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="core-identity-icon-wrapper">
+                <Gem />
+              </div>
+              <div className="core-identity-content">
+                <h2>Quality Policy</h2>
+                <p>
+                  At Nano World School quality is not a system; it is our spirit. Every classroom conversation, 
+                  every teacher interaction, and every assessment is designed to bring out the best in your child.
+                </p>
+                <p>
+                  We believe in consistent mentoring, trained faculty, personalized attention, 
+                  and the thoughtful use of technology to ensure your child's learning journey 
+                  is joyful, focused, and deeply fulfilling.
+                </p>
+                <p>
+                  We promise you that your child's growth here will be measured not only in ranks and results, 
+                  but also in resilience, values, and a lifelong love for learning.
+                </p>
+              </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      <section className="section bg-light">
-        <div className="container">
-          <motion.div 
-            className="grid-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {values.map((v, i) => (
-              <motion.div key={i} className="card-premium" variants={itemVariants}>
-                <div style={{ marginBottom: '1rem' }}>{v.icon}</div>
-                <h3>{v.title}</h3>
-                <p style={{ fontSize: '0.9rem', color: '#64748b' }}>{v.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
     </motion.div>

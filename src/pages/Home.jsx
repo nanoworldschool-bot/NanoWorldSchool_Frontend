@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Users, Award, BookOpen, Clock, ChevronRight, GraduationCap, Image, Info, Download, FileText, Monitor, Shield, Presentation, MousePointer2, Settings, LineChart, Activity, Scale, Hammer } from 'lucide-react';
+import { Users, Award, BookOpen, Clock, ChevronRight, GraduationCap, Image, Info, Download, FileText, Monitor, Shield, Presentation, MousePointer2, Settings, LineChart, Activity, Scale, Hammer, Heart } from 'lucide-react';
 
 
 import SEO from '../components/SEO';
@@ -174,24 +174,24 @@ function Home() {
           <div className="grid-4">
             {[
               { 
-                title: 'Experiential Learning', 
-                desc: 'Moving beyond textbooks with hands-on activities that make concepts stick for a lifetime.',
-                icon: <Users size={40} /> 
+                title: 'Academic Excellence', 
+                desc: 'A comprehensive curriculum designed for deep conceptual mastery and competitive readiness.',
+                icon: <BookOpen size={40} /> 
               },
               { 
-                title: 'Smart Infrastructure', 
-                desc: 'Digital classrooms and AI-enabled learning tools that prepare students for a tech-driven world.',
-                icon: <Monitor size={40} /> 
+                title: 'Leadership Edge', 
+                desc: 'Special focus on fluent communication, public speaking, and building tomorrow\'s bold leaders.',
+                icon: <Presentation size={40} /> 
               },
               { 
-                title: 'Safety & Care', 
-                desc: 'CCTV monitored campus and GPS-tracked transportation ensuring your child\'s safety always.',
-                icon: <Shield size={40} /> 
+                title: 'Sports & Fitness', 
+                desc: 'Professionally guided activities to build physical stamina, discipline, and healthy lifelong habits.',
+                icon: <Activity size={40} /> 
               },
               { 
-                title: 'Bold Communication', 
-                desc: 'Special focus on public speaking and personality development to build tomorrow\'s leaders.',
-                icon: <GraduationCap size={40} /> 
+                title: 'Values & Wellness', 
+                desc: 'Nurturing emotional resilience, empathy, and strong character through integrated life skills.',
+                icon: <Heart size={40} /> 
               }
             ].map((feature, i) => (
               <motion.div 

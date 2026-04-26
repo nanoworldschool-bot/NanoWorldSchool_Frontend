@@ -198,9 +198,11 @@ function Contact() {
                   style={{ width: '100%', padding: '1rem 0', border: 'none', borderBottom: '2px solid var(--color-border)', background: 'transparent', marginBottom: '1rem' }}
                 >
                   <option value="" disabled>Select Grade for Admission</option>
-                  <option value="nursery">Nursery / LKG / UKG</option>
-                  <option value="grade1-5">Grade 1 - 5</option>
-                  <option value="grade6-10">Grade 6 - 10</option>
+                  <option value="grade6-10">Grade 6</option>
+                  <option value="grade6-10">Grade 7</option>
+                  <option value="grade6-10">Grade 8</option>
+                  <option value="grade6-10">Grade 9</option>
+                  <option value="grade6-10">Grade 10</option>
                 </select>
               </div>
 
