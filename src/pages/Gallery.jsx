@@ -9,6 +9,9 @@ function Gallery() {
     { src: '/interior_seating.jpeg', title: 'Student Lounge' },
     { src: '/seminar_hall.jpeg', title: 'Seminar Hall' },
     { src: '/branding_wall.jpeg', title: 'Inspiration Wall' },
+    { src: '/new_reception.jpeg', title: 'Main Reception Area' },
+    { src: '/discussion_rooms.jpeg', title: 'Discussion Rooms' },
+    { src: '/digital_classroom.jpeg', title: 'Digital Classroom' },
   ];
 
   return (

@@ -63,10 +63,10 @@ function Home() {
 
   const stats = [
 
-    { icon: <Users size={32} />, value: '500+', label: 'Students' },
-    { icon: <Award size={32} />, value: '25+', label: 'Awards' },
-    { icon: <BookOpen size={32} />, value: '15+', label: 'Programs' },
-    { icon: <Clock size={32} />, value: '18+', label: 'Years' },
+    { icon: <Users size={28} />, value: '500+', label: 'Students' },
+    { icon: <Award size={28} />, value: '25+', label: 'Awards' },
+    { icon: <BookOpen size={28} />, value: '15+', label: 'Programs' },
+    { icon: <Clock size={28} />, value: '18+', label: 'Years' },
   ];
 
   const testimonials = [
@@ -137,20 +137,20 @@ function Home() {
       </header>
 
       {/* Stats Section with Staggered Animation */}
-      <section className="section bg-navy" style={{ padding: '5rem 0' }}>
+      <section className="section bg-navy" style={{ padding: '2.5rem 0' }}>
         <div className="container">
           <motion.div 
             className="grid-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             {stats.map((stat, index) => (
               <motion.div key={index} className="text-center" variants={itemVariants}>
-                <div className="text-gold" style={{ marginBottom: '1rem' }}>{stat.icon}</div>
-                <h2 style={{ color: 'white', fontSize: '2.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>{stat.value}</h2>
-                <p style={{ color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.8rem' }}>{stat.label}</p>
+                <div className="text-gold" style={{ marginBottom: '0.5rem' }}>{stat.icon}</div>
+                <h2 style={{ color: 'white', fontSize: '2.2rem', fontWeight: 800, marginBottom: '0.2rem' }}>{stat.value}</h2>
+                <p style={{ color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.8rem' }}>{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
