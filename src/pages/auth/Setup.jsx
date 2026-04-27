@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { UserPlus, Mail, Lock, User, Loader2 } from 'lucide-react';
-import axios from 'axios';
+import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 
 function Setup() {
@@ -25,7 +25,7 @@ function Setup() {
 
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/setup', {
+      const res = await api.post('/setup', {
         fullName: formData.fullName,
         email: formData.email,
         password: formData.password

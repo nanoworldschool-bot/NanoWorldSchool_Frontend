@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { Save, Loader2, FileText, ChevronDown, ChevronUp } from 'lucide-react';
-
-const API_URL = 'http://localhost:5000/api/content';
 
 const DEFAULT_CONTENT = {
   home: {
@@ -98,7 +96,7 @@ function PageManagement() {
     setLoading(true);
     setExpandedSections({});
     try {
-      const res = await axios.get(`${API_URL}/${selectedPage}`);
+      const res = await api.get(`/content/${selectedPage}`);
       const fetchedContent = res.data.content || {};
       setContent({ ...DEFAULT_CONTENT[selectedPage], ...fetchedContent });
     } catch (err) {
@@ -112,7 +110,7 @@ function PageManagement() {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await axios.put(`${API_URL}/${selectedPage}`, { content });
+      await api.put(`/content/${selectedPage}`, { content });
       alert('Content updated successfully!');
     } catch (err) {
       alert('Failed to update content.');
