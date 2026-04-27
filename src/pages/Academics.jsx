@@ -333,7 +333,7 @@ function Academics() {
             transition={{ duration: 0.8 }}
           >
             <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.3)' }}>
-              <img src="/classroom.jpeg" alt="Smart Classroom" />
+              <img src="/clsss.png" alt="Smart Classroom" />
             </div>
           </motion.div>
           <motion.div 
@@ -353,6 +353,8 @@ function Academics() {
               <li style={{ color: 'white' }}>Smart Boards in every classroom</li>
               <li style={{ color: 'white' }}>Limited student-teacher ratio (15:1)</li>
               <li style={{ color: 'white' }}>Individualized Attention</li>
+              <li style={{ color: 'white' }}>My Classroom App</li>
+
             </ul>
           </motion.div>
         </div>
