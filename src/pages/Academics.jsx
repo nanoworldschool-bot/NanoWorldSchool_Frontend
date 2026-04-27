@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Laptop, Music, Dumbbell, Palette, BrainCircuit, Brain, Heart, Mic, Activity, MonitorSmartphone } from 'lucide-react';
 import SEO from '../components/SEO';
+import api from '../utils/api';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,6 +22,22 @@ const itemVariants = {
 };
 
 function Academics() {
+  const [pageContent, setPageContent] = useState({});
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const res = await api.get('/content/academics');
+        if (res.data && res.data.content) {
+          setPageContent(res.data.content);
+        }
+      } catch (err) {
+        console.warn('Using default content');
+      }
+    };
+    fetchContent();
+  }, []);
+
   const programs = [
     { icon: <BookOpen />, title: "Foundation Stage", desc: "Focusing on literacy, numeracy, and social skills through play-based learning." },
     { icon: <BrainCircuit />, title: "Primary Education", desc: "Integrated curriculum with emphasis on conceptual clarity and critical thinking." },
@@ -48,10 +65,10 @@ function Academics() {
             animate={{ opacity: 1, y: 0 }}
             className="hero-title"
           >
-            Academic Excellence
+            {pageContent.academicsHeroTitle || 'Academic Excellence'}
           </motion.h1>
           <p className="section-subtitle" style={{ color: 'white' }}>
-            A holistic curriculum designed for the 21st-century learner.
+            {pageContent.academicsHeroSubtitle || 'A holistic curriculum designed for the 21st-century learner.'}
           </p>
         </div>
       </section>
@@ -65,10 +82,14 @@ function Academics() {
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title text-left" style={{ color: 'white', fontSize: '2.5rem', marginBottom: '1rem', textTransform: 'uppercase' }}>Philosophy</h2>
-            <h3 style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontSize: '1.2rem' }}>The Balance Between Brilliance and Being</h3>
+            <h2 className="section-title text-left" style={{ color: 'white', fontSize: '2.5rem', marginBottom: '1rem', textTransform: 'uppercase' }}>
+              {pageContent.philosophyTitle || 'Philosophy'}
+            </h2>
+            <h3 style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+              {pageContent.philosophySubtitle || 'The Balance Between Brilliance and Being'}
+            </h3>
             <p style={{ color: 'white', fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '800px', opacity: 0.9 }}>
-              At Nano World School, learning means nurturing the Head, Heart, Voice and Body — developing intellect, empathy, expression, and holistic physical vitality.
+              {pageContent.philosophyText || 'At Nano World School, learning means nurturing the Head, Heart, Voice and Body — developing intellect, empathy, expression, and holistic physical vitality.'}
             </p>
           </motion.div>
           
@@ -121,7 +142,9 @@ function Academics() {
       <section className="section" style={{ backgroundColor: '#fdfbf7', padding: '0' }}>
         <div style={{ backgroundColor: '#213054', padding: '3rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
           <div className="container">
-            <h2 style={{ color: 'white', fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', letterSpacing: '2px' }}>Courses Offered</h2>
+            <h2 style={{ color: 'white', fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', letterSpacing: '2px' }}>
+              {pageContent.coursesTitle || 'Courses Offered'}
+            </h2>
           </div>
         </div>
         <div className="container" style={{ padding: '5rem 2rem' }}>
@@ -175,7 +198,9 @@ function Academics() {
       <section className="section" style={{ backgroundColor: '#f6f3e6', padding: '0' }}>
         <div style={{ backgroundColor: '#213054', padding: '3rem 0', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
           <div className="container">
-            <h2 style={{ color: 'white', fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', letterSpacing: '2px' }}>Tech Based Learning</h2>
+            <h2 style={{ color: 'white', fontSize: '2.5rem', margin: 0, textTransform: 'uppercase', letterSpacing: '2px' }}>
+              {pageContent.techTitle || 'Tech Based Learning'}
+            </h2>
           </div>
         </div>
         <div className="container" style={{ padding: '5rem 2rem' }}>
@@ -219,12 +244,11 @@ function Academics() {
             viewport={{ once: true }}
             style={{ backgroundColor: '#213054', padding: '5rem 4rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: '1 1 500px' }}
           >
-            <h2 style={{ color: 'white', fontSize: '3rem', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px' }}>Faculty</h2>
+            <h2 style={{ color: 'white', fontSize: '3rem', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
+              {pageContent.facultyTitle || 'Faculty'}
+            </h2>
             <p style={{ color: 'white', fontSize: '1.3rem', marginBottom: '1.5rem', lineHeight: '1.6', opacity: 0.9 }}>
-              At Nano World School, our greatest strength is our faculty.
-            </p>
-            <p style={{ color: 'white', fontSize: '1.3rem', lineHeight: '1.6', opacity: 0.9 }}>
-              They are the people who shape every child's growth with dedication and care.
+              {pageContent.facultyText || 'At Nano World School, our greatest strength is our faculty. They are the people who shape every child\'s growth with dedication and care.'}
             </p>
           </motion.div>
           <motion.div 
@@ -319,8 +343,12 @@ function Academics() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="section-title text-left" style={{ color: 'var(--color-gold)' }}>Modern Pedagogy</h2>
-            <p style={{ color: 'white', opacity: 0.9 }}>Our teaching methodology is rooted in the "Speak Bold" philosophy. We encourage students to voice their opinions, ask questions, and engage in healthy debates.</p>
+            <h2 className="section-title text-left" style={{ color: 'var(--color-gold)' }}>
+              {pageContent.pedagogyTitle || 'Modern Pedagogy'}
+            </h2>
+            <p style={{ color: 'white', opacity: 0.9 }}>
+              {pageContent.pedagogyText || 'Our teaching methodology is rooted in the "Speak Bold" philosophy. We encourage students to voice their opinions, ask questions, and engage in healthy debates.'}
+            </p>
             <ul className="about-list" style={{ marginTop: '2rem' }}>
               <li style={{ color: 'white' }}>Smart Boards in every classroom</li>
               <li style={{ color: 'white' }}>Limited student-teacher ratio (15:1)</li>

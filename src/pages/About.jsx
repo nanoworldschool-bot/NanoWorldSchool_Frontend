@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, Gem } from 'lucide-react';
 import SEO from '../components/SEO';
+import api from '../utils/api';
 
 function About() {
+  const [pageContent, setPageContent] = useState({});
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const res = await api.get('/content/about');
+        if (res.data && res.data.content) {
+          setPageContent(res.data.content);
+        }
+      } catch (err) {
+        console.warn('Using default content');
+      }
+    };
+    fetchContent();
+  }, []);
   return (
     <motion.div
       initial="hidden"
@@ -23,7 +39,7 @@ function About() {
             transition={{ duration: 0.8 }}
             className="hero-title"
           >
-            About Our School
+            {pageContent.aboutHeroTitle || 'About Our School'}
           </motion.h1>
         </div>
       </section>
@@ -37,9 +53,9 @@ function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="outcome-title">THE OUTCOME PROMISE</h2>
+            <h2 className="outcome-title">{pageContent.outcomeTitle || 'THE OUTCOME PROMISE'}</h2>
             <p style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '1.5rem' }}>
-              By Class X, every Nano World student will:
+              {pageContent.outcomeSubtitle || 'By Class X, every Nano World student will:'}
             </p>
             <ul className="outcome-list">
               <li>Master concepts with depth, clarity, and a spirit of curiosity.</li>
@@ -86,9 +102,7 @@ function About() {
               <div className="core-identity-content">
                 <h2>Vision</h2>
                 <p>
-                  To nurture the future we have to ready individuals by blending academic excellence, 
-                  strong values, confident communication, and holistic physical well being, 
-                  empowering every child to learn deeply, live responsibly, and lead with integrity.
+                  {pageContent.visionText || 'To nurture the future we have to ready individuals by blending academic excellence, strong values, confident communication, and holistic physical well being, empowering every child to learn deeply, live responsibly, and lead with integrity.'}
                 </p>
               </div>
             </motion.div>
@@ -107,13 +121,10 @@ function About() {
               <div className="core-identity-content">
                 <h2>Mission</h2>
                 <p>
-                  Our mission is to shape every Nano Scholar into a self-assured learner and leader. 
-                  We blend academic excellence with emotional intelligence, communication mastery, 
-                  and physical fitness — ensuring that each child grows with both intellect and inner strength.
+                  {pageContent.missionText1 || 'Our mission is to shape every Nano Scholar into a self-assured learner and leader. We blend academic excellence with emotional intelligence, communication mastery, and physical fitness — ensuring that each child grows with both intellect and inner strength.'}
                 </p>
                 <p>
-                  Through a culture of care, challenge, and character, we prepare students not just to clear exams, 
-                  but to create their own mark in the world — with humility in success and courage in challenges.
+                  {pageContent.missionText2 || 'Through a culture of care, challenge, and character, we prepare students not just to clear exams, but to create their own mark in the world — with humility in success and courage in challenges.'}
                 </p>
               </div>
             </motion.div>
@@ -132,17 +143,13 @@ function About() {
               <div className="core-identity-content">
                 <h2>Quality Policy</h2>
                 <p>
-                  At Nano World School quality is not a system; it is our spirit. Every classroom conversation, 
-                  every teacher interaction, and every assessment is designed to bring out the best in your child.
+                  {pageContent.qualityText1 || 'At Nano World School quality is not a system; it is our spirit. Every classroom conversation, every teacher interaction, and every assessment is designed to bring out the best in your child.'}
                 </p>
                 <p>
-                  We believe in consistent mentoring, trained faculty, personalized attention, 
-                  and the thoughtful use of technology to ensure your child's learning journey 
-                  is joyful, focused, and deeply fulfilling.
+                  {pageContent.qualityText2 || "We believe in consistent mentoring, trained faculty, personalized attention, and the thoughtful use of technology to ensure your child's learning journey is joyful, focused, and deeply fulfilling."}
                 </p>
                 <p>
-                  We promise you that your child's growth here will be measured not only in ranks and results, 
-                  but also in resilience, values, and a lifelong love for learning.
+                  {pageContent.qualityText3 || "We promise you that your child's growth here will be measured not only in ranks and results, but also in resilience, values, and a lifelong love for learning."}
                 </p>
               </div>
             </motion.div>

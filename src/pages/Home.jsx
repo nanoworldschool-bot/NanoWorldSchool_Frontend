@@ -35,7 +35,24 @@ function Home() {
   const [pageContent, setPageContent] = useState({
     heroTitle: 'Nano World School',
     heroSubtitle: 'Think Deep. Speak Bold.',
-    heroText: 'Empowering students through experiential learning, holistic development, academics, discipline and world-class educational infrastructure.'
+    heroText: 'Empowering students through experiential learning, holistic development, academics, discipline and world-class educational infrastructure.',
+    statsStudents: '500+', statsAwards: '25+', statsPrograms: '15+', statsYears: '18+',
+    whyChooseTitle: 'Why Choose Nano World School?',
+    whyChooseSubtitle: "We don't just teach; we prepare children for the challenges of the 21st century.",
+    aboutTitle: 'Nurturing True Potential',
+    aboutSubtitle: 'At Nano World School, we believe in shaping the leaders of tomorrow through an integrated approach to education.',
+    academicTitle: 'Academic Excellence',
+    academicSubtitle: 'A comprehensive curriculum designed for competitive readiness and holistic growth.',
+    virtualTourTitle: 'Experience Nano World School',
+    virtualTourSubtitle: 'Take a virtual tour of our vibrant campus and engaging learning environment.',
+    campusTitle: 'Campus Highlights',
+    campusSubtitle: 'Take a glimpse into our world-class educational environment.',
+    exploreTitle: 'Explore Our School',
+    exploreSubtitle: 'Everything you need to know about Nano World School',
+    admissionsTitle: 'Admissions Open 2026–27',
+    admissionsSubtitle: 'Secure a bright future for your child at Nano World School. Join our family of lifelong learners and future leaders.',
+    brochureTitle: 'Download Official Brochure',
+    brochureSubtitle: 'Get complete details about our curriculum, state-of-the-art facilities, and the simplified admission process for the academic year 2024-25.'
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -62,11 +79,10 @@ function Home() {
 
 
   const stats = [
-
-    { icon: <Users size={28} />, value: '500+', label: 'Students' },
-    { icon: <Award size={28} />, value: '25+', label: 'Awards' },
-    { icon: <BookOpen size={28} />, value: '15+', label: 'Programs' },
-    { icon: <Clock size={28} />, value: '18+', label: 'Years' },
+    { icon: <Users size={28} />, value: pageContent.statsStudents || '500+', label: 'Students' },
+    { icon: <Award size={28} />, value: pageContent.statsAwards || '25+', label: 'Awards' },
+    { icon: <BookOpen size={28} />, value: pageContent.statsPrograms || '15+', label: 'Programs' },
+    { icon: <Clock size={28} />, value: pageContent.statsYears || '18+', label: 'Years' },
   ];
 
   const testimonials = [
@@ -167,8 +183,8 @@ function Home() {
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Why Choose Nano World School?</h2>
-            <p className="section-subtitle">We don't just teach; we prepare children for the challenges of the 21st century.</p>
+            <h2 className="section-title">{pageContent.whyChooseTitle || 'Why Choose Nano World School?'}</h2>
+            <p className="section-subtitle">{pageContent.whyChooseSubtitle || "We don't just teach; we prepare children for the challenges of the 21st century."}</p>
           </motion.div>
 
           <div className="grid-4">
@@ -240,8 +256,8 @@ function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, type: 'spring' }}
           >
-            <h2 className="section-title text-left">Nurturing True Potential</h2>
-            <p className="section-subtitle text-left" style={{ marginBottom: '2rem' }}>At Nano World School, we believe in shaping the leaders of tomorrow through an integrated approach to education.</p>
+            <h2 className="section-title text-left">{pageContent.aboutTitle || 'Nurturing True Potential'}</h2>
+            <p className="section-subtitle text-left" style={{ marginBottom: '2rem' }}>{pageContent.aboutSubtitle || 'At Nano World School, we believe in shaping the leaders of tomorrow through an integrated approach to education.'}</p>
             
             <div className="about-points-list">
               {[
@@ -281,8 +297,8 @@ function Home() {
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Academic Excellence</h2>
-            <p className="section-subtitle">A comprehensive curriculum designed for competitive readiness and holistic growth.</p>
+            <h2 className="section-title">{pageContent.academicTitle || 'Academic Excellence'}</h2>
+            <p className="section-subtitle">{pageContent.academicSubtitle || 'A comprehensive curriculum designed for competitive readiness and holistic growth.'}</p>
           </motion.div>
 
           <div className="simple-academic-grid">
@@ -354,8 +370,8 @@ function Home() {
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Experience Nano World School</h2>
-            <p className="section-subtitle">Take a virtual tour of our vibrant campus and engaging learning environment.</p>
+            <h2 className="section-title">{pageContent.virtualTourTitle || 'Experience Nano World School'}</h2>
+            <p className="section-subtitle">{pageContent.virtualTourSubtitle || 'Take a virtual tour of our vibrant campus and engaging learning environment.'}</p>
           </motion.div>
 
           <div className="grid-2" style={{ gap: '2rem' }}>
@@ -404,8 +420,8 @@ function Home() {
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Campus Highlights</h2>
-            <p className="section-subtitle">Take a glimpse into our world-class educational environment.</p>
+            <h2 className="section-title">{pageContent.campusTitle || 'Campus Highlights'}</h2>
+            <p className="section-subtitle">{pageContent.campusSubtitle || 'Take a glimpse into our world-class educational environment.'}</p>
           </motion.div>
 
           <div className="campus-gallery-grid">
@@ -451,8 +467,8 @@ function Home() {
             viewport={{ once: true }}
             style={{ marginBottom: '4rem' }}
           >
-            <h2 className="section-title">Explore Our School</h2>
-            <p className="section-subtitle">Everything you need to know about Nano World School</p>
+            <h2 className="section-title">{pageContent.exploreTitle || 'Explore Our School'}</h2>
+            <p className="section-subtitle">{pageContent.exploreSubtitle || 'Everything you need to know about Nano World School'}</p>
           </motion.div>
 
           <div className="grid-3">
@@ -529,10 +545,10 @@ function Home() {
             }}
           >
             <h2 className="section-title" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-              Admissions Open 2026–27
+              {pageContent.admissionsTitle || 'Admissions Open 2026–27'}
             </h2>
             <p className="section-subtitle" style={{ fontSize: '1.2rem', maxWidth: '600px', marginBottom: '2.5rem' }}>
-              Secure a bright future for your child at Nano World School. Join our family of lifelong learners and future leaders.
+              {pageContent.admissionsSubtitle || 'Secure a bright future for your child at Nano World School. Join our family of lifelong learners and future leaders.'}
             </p>
             <Link to="/contact" className="btn btn-navy" style={{ padding: '1.2rem 3rem', fontSize: '1.1rem' }}>
               Enquire Now
@@ -560,10 +576,10 @@ function Home() {
                 <FileText size={48} />
               </div>
               <h2 className="brochure-cta-title">
-                Download Official Brochure
+                {pageContent.brochureTitle || 'Download Official Brochure'}
               </h2>
               <p className="brochure-cta-text" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 3rem' }}>
-                Get complete details about our curriculum, state-of-the-art facilities, and the simplified admission process for the academic year 2024-25.
+                {pageContent.brochureSubtitle || 'Get complete details about our curriculum, state-of-the-art facilities, and the simplified admission process for the academic year 2024-25.'}
               </p>
 
 
