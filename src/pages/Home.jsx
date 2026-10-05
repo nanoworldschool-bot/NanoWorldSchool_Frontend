@@ -376,8 +376,8 @@ function Home() {
 
           <div className="grid-2" style={{ gap: '2rem' }}>
             {[
-              'https://www.youtube.com/embed/P9GIYNQ9BTE',
-              'https://www.youtube.com/embed/iABxTUQKZBg'
+              { type: 'youtube', url: 'https://www.youtube.com/embed/NvtzfmFy2ts' },
+              { type: 'local', url: '/intro-vid.mp4' }
             ].map((video, index) => (
               <motion.div 
                 key={index}
@@ -393,15 +393,27 @@ function Home() {
                   aspectRatio: '16/9'
                 }}
               >
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={video}
-                  title={`Virtual Tour ${index + 1}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
+                {video.type === 'youtube' ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={video.url}
+                    title={`Virtual Tour ${index + 1}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <video
+                    width="100%"
+                    height="100%"
+                    src={video.url}
+                    controls
+                    muted
+                    loop
+                    style={{ objectFit: 'cover' }}
+                  ></video>
+                )}
               </motion.div>
             ))}
           </div>
