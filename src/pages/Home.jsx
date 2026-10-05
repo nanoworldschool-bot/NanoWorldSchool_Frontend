@@ -377,6 +377,8 @@ function Home() {
           <div className="grid-2" style={{ gap: '2rem' }}>
             {[
               { type: 'youtube', url: 'https://www.youtube.com/embed/NvtzfmFy2ts' },
+              { type : 'youtube', url: 'https://www.youtube.com/embed/P9GIYNQ9BTE'},
+              { type : 'youtube', url: 'https://www.youtube.com/embed/iABxTUQKZBg'},
               { type: 'local', url: '/intro-vid.mp4' }
             ].map((video, index) => (
               <motion.div 
